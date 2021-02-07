@@ -1,7 +1,5 @@
 
 
-
-
 const express = require("express");
 const exhnbs  = require("express-handlebars");
 const bodyParser = require("body-parser");
@@ -23,31 +21,36 @@ const morgan = require("morgan");
 const redis = require("redis");
 const connectRedis = require("connect-redis");
 const ioredis = require("ioredis");
+const shelljs =  require("shelljs");
 
+module.exports = function ( config ){
+    return require("./server/config/server-config")(
+        {        
+            express  , 
+            exhnbs  , 
+            bodyParser , 
+            cookieParser , 
+            expressMiddleware,
+            expressSession ,
+            expressSslify ,
+            http ,
+            https ,
+            httpErrors ,
+            less ,
+            multer ,
+            mysql ,
+            nodeHtmlParser , 
+            socketio ,
+            morgan,
+            redis ,
+            connectRedis,
+            ioredis ,
+            shelljs,
+            fs ,
+            path ,
+            __dirname
+        },
 
-require("./server/config/set-config")(
-    {        
-        express  , 
-        exhnbs  , 
-        bodyParser , 
-        cookieParser , 
-        expressMiddleware,
-        expressSession ,
-        expressSslify ,
-        http ,
-        https ,
-        httpErrors ,
-        less ,
-        multer ,
-        mysql ,
-        nodeHtmlParser , 
-        socketio ,
-        morgan,
-        redis ,
-        connectRedis,
-        ioredis ,
-        fs ,
-        path ,
-        __dirname
-    }
-);
+        config 
+    );
+}
