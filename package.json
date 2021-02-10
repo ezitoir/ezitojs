@@ -29,6 +29,7 @@
     "mysql": "^2.18.1",
     "node-html-parser": "^2.1.0",
     "nodemon": "^2.0.7",
+    "on-headers": "^1.0.2",
     "redis": "^3.0.2",
     "socket.io": "^3.1.1"
   }
