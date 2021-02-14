@@ -1,17 +1,24 @@
  
- const { template , createLessMiddleware } = require("./src/core");
+const { template , createLessMiddleware } = require("./src/core");
  
+const mysql = require("mysql");
 
 module.exports = function ( config ){
-    let { static , __dirname , lessMiddleware } = config;
-    
+    const { static , __dirname , lessMiddleware , mysqlSetting } = config;
+    const { 
+        NODE_ENV  = "development" , 
+    } = process.env;
+    const IN_PROC = NODE_ENV === 'production';
 
-    return function ( req, res ,next) {
+
+    return function ( req , res ,next) {
         let response = res.send ;
-        
+          
         //
         try {
-            createLessMiddleware(lessMiddleware);
+            if( !IN_PROC ){
+                createLessMiddleware(lessMiddleware);
+            }
         } catch (error) {
              
         }
